@@ -10,32 +10,44 @@ class BowlingGame
   
   def score
     score = 0
-    frame_index = 0
+    @frame_index = 0
     10.times do |frame|
-      if is_strike?(frame_index)
-        score += 10 + pins_for(frame_index + 1) + pins_for(frame_index + 2)
-        frame_index += 1
-      elsif is_spare?(frame_index)
-        score += 10 + @rolls[frame_index + 2]
-        frame_index += 2
+      if is_strike?
+        score += 10 + strike_bonus
+        @frame_index += 1
+      elsif is_spare?
+        score += 10 + spare_bonus
+        @frame_index += 2
       else
-        score += pins_for(frame_index) + pins_for(frame_index + 1)
-        frame_index += 2
+        score += score_for_frame
+        @frame_index += 2
       end
     end
     return score
   end
   
-  def is_strike?(frame_index)
-    pins_for(frame_index) == 10
+  def is_strike?
+    pins_for(@frame_index) == 10
   end
   
-  def is_spare?(frame_index)
-    pins_for(frame_index) + pins_for(frame_index + 1) == 10
+  def is_spare?
+    pins_for(@frame_index) + pins_for(@frame_index + 1) == 10
   end
   
   def pins_for(frame_index)
     @rolls[frame_index] || 0
+  end
+  
+  def score_for_frame
+    pins_for(@frame_index) + pins_for(@frame_index + 1)
+  end
+  
+  def strike_bonus
+    pins_for(@frame_index + 1) + pins_for(@frame_index + 2)
+  end
+  
+  def spare_bonus
+    pins_for(@frame_index + 2)
   end
   
 end

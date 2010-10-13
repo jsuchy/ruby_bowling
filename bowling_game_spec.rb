@@ -61,5 +61,4 @@ describe BowlingGame do
     @game.score.should == 200
   end
   
-  
 end
