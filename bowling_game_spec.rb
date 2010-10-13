@@ -3,9 +3,11 @@ require 'bowling_game'
 
 describe BowlingGame do
 
-  it "scores an all gutter game" do
+  before(:each) do
     @game = BowlingGame.new
-    
+  end
+  
+  it "scores an all gutter game" do
     20.times do
       @game.roll(0)
     end
@@ -14,8 +16,6 @@ describe BowlingGame do
   end
   
   it "scores a game with all 1s" do
-    @game = BowlingGame.new
-    
     20.times do
       @game.roll(1)
     end
