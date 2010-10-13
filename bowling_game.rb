@@ -12,7 +12,7 @@ class BowlingGame
     score = 0
     frame_index = 0
     10.times do |frame|
-      if @rolls[frame_index] + @rolls[frame_index + 1] == 10
+      if is_spare?(frame_index)
         score += 10 + @rolls[frame_index + 2]
         frame_index += 2
       else
@@ -21,6 +21,10 @@ class BowlingGame
       end
     end
     return score
+  end
+  
+  def is_spare?(frame_index)
+    return @rolls[frame_index] + @rolls[frame_index + 1] == 10
   end
   
 end
