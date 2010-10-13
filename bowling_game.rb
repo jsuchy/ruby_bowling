@@ -12,7 +12,10 @@ class BowlingGame
     score = 0
     frame_index = 0
     10.times do |frame|
-      if is_spare?(frame_index)
+      if pins_for(frame_index) == 10
+        score += 10 + pins_for(frame_index + 1) + pins_for(frame_index + 2)
+        frame_index += 1
+      elsif is_spare?(frame_index)
         score += 10 + @rolls[frame_index + 2]
         frame_index += 2
       else
