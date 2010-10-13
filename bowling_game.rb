@@ -5,7 +5,7 @@ class BowlingGame
   end
   
   def roll(pins)
-    @rolls << pins
+    @rolls.push(pins)
   end
   
   def score
