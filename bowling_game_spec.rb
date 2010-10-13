@@ -13,6 +13,15 @@ describe BowlingGame do
     end
   end
   
+  def roll_strike
+    @game.roll(10)
+  end
+  
+  def roll_spare
+    @game.roll(5)
+    @game.roll(5)
+  end
+  
   it "scores an all gutter game" do
     roll_many(20, 0)
     
@@ -26,8 +35,7 @@ describe BowlingGame do
   end
   
   it "scores one spare" do
-    @game.roll(5)
-    @game.roll(5)
+    roll_spare
     @game.roll(3)
     roll_many(17, 0)
     
@@ -35,7 +43,7 @@ describe BowlingGame do
   end
   
   it "scores one strike" do
-    @game.roll(10)
+    roll_strike
     @game.roll(3)
     @game.roll(4)
     roll_many(16, 0)
