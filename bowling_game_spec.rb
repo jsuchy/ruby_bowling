@@ -34,5 +34,13 @@ describe BowlingGame do
     @game.score.should == 16
   end
   
-
+  it "scores one strike" do
+    @game.roll(10)
+    @game.roll(3)
+    @game.roll(4)
+    roll_many(16, 0)
+    
+    @game.score.should == 24
+  end
+  
 end

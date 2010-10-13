@@ -16,7 +16,7 @@ class BowlingGame
         score += 10 + @rolls[frame_index + 2]
         frame_index += 2
       else
-        score += @rolls[frame_index] + @rolls[frame_index + 1]
+        score += pins_for(frame_index) + pins_for(frame_index + 1)
         frame_index += 2
       end
     end
@@ -24,7 +24,11 @@ class BowlingGame
   end
   
   def is_spare?(frame_index)
-    return @rolls[frame_index] + @rolls[frame_index + 1] == 10
+    return pins_for(frame_index) + pins_for(frame_index + 1) == 10
+  end
+  
+  def pins_for(frame_index)
+    return @rolls[frame_index] || 0
   end
   
 end
