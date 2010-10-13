@@ -7,18 +7,20 @@ describe BowlingGame do
     @game = BowlingGame.new
   end
   
-  it "scores an all gutter game" do
-    20.times do
-      @game.roll(0)
+  def roll_many(number, pins)
+    number.times do
+      @game.roll(pins)
     end
+  end
+  
+  it "scores an all gutter game" do
+    roll_many(20, 0)
     
     @game.score.should == 0
   end
   
   it "scores a game with all 1s" do
-    20.times do
-      @game.roll(1)
-    end
+    roll_many(20, 1)
     
     @game.score.should == 20
   end  
