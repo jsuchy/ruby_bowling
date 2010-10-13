@@ -51,4 +51,15 @@ describe BowlingGame do
     @game.score.should == 24
   end
   
+  it "scores Dutch game" do
+    5.times do
+      roll_strike
+      roll_spare
+    end
+    roll_strike
+    
+    @game.score.should == 200
+  end
+  
+  
 end
